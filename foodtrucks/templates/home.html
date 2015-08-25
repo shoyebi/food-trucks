@@ -3,9 +3,21 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>SF Food Trucks</title>
-    <h2>Welcome to Hike Console<h2>
+    <h2>Let us help you finding the food trucks near you<h2>
+
 </head>
 <body>
+    <div>
+            <form name="myForm" method="post" enctype="multipart/form-data"  action="/getFoodTrucks">
+                 Distance (miles) : <input type="text" name="distance" value="1.0"/> </br>from
+                 Location  [
+                 Latitude (degree radians) : <input type="text" name="latitude" value="37.7728288324927"/>
+                 Longitude (degree radians) : <input type="text" name="longitude" value="-122.415671488000"/>]
+                <div id="submitId"  >
+                    <input type="submit"  name="submit" value="Submit"><br><br>
+                </div>
+            </form>
+     </div>
 
 </body>
 </html>

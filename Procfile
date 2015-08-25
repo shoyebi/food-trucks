@@ -1,1 +1,1 @@
-web: gunicorn foodtrucks.server:app --log-file -
+web: bin/web

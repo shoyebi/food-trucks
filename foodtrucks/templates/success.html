@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Near by food trucks</title>
+    <table border="1">
+           	{% for row in data %}
+
+  				{% if loop.index == 1 %}
+  				<tr>
+  					{% for column in row %}
+    				<th>{{column}}</th>
+    				{% endfor %}
+    			</tr>
+    			{% else %}
+    			<tr>
+  					{% for value in row %}
+    				<td>{{value}}</td>
+    				{% endfor %}
+    			</tr>
+				{% endif %}
+
+  			{% endfor %}
+  		 	</table>
+</head>
+<body>
+
+</body>
+</html>
