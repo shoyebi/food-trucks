@@ -34,13 +34,14 @@ def fetch_food_trucks():
     cur.execute("""select objectid, latitude,longitude,3956 * 2 * ASIN(SQRT( POWER(SIN(( %s - cast(latitude as float)) *  pi()/180 / 2), 2) +COS( %s * pi()/180)\
                 * COS(cast(latitude as float) * pi()/180) * POWER(SIN(( %s - cast(longitude as float)) * pi()/180 / 2), 2) )) \
                 as distance,fooditems,expirationdate from foodtrucks WHERE cast(longitude as float) between %s and %s and \
-                cast(latitude as float) between %s and %s """, (mylat, mylat, mylon, lon1, lon2, lat1, lat2))
+                cast(latitude as float) between %s and %s order by distance """, (mylat, mylat, mylon, lon1, lon2, lat1, lat2))
     rows = cur.fetchall()
     count =0
     data=[]
     data.insert(0,["objectid","latitude","longitude","distance","fooditems","expirationdate"])
     for row in rows:
-        data.append(list(row))
+        if row[3]<=dist:
+	        data.append(list(row))
         count=count+1
     return render_template("success.html", count_res = str(count),data=data)
 
